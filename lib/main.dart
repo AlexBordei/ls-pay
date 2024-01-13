@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:pay/features/auth/presentation/pages/login_page.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'core/service_locator.dart' as di;
 
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: ".env");
+
   await Supabase.initialize(
-    url: 'https://lnjozbnrxxpfujyewibd.supabase.co',
-    anonKey:
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imxuam96Ym5yeHhwZnVqeWV3aWJkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDUxNDY1MzAsImV4cCI6MjAyMDcyMjUzMH0.bR9ijmqFf1a_KfaGNw1fynf7Y2OjNvJ0TZzJzSWHNAQ',
+    url: dotenv.env['SUPABASE_URL']!,
+    anonKey: dotenv.env['SUPABASE_ANON_KEY']!,
   );
   di.init();
   runApp(const MyApp());

@@ -38,7 +38,7 @@ class LoginPageState extends State<LoginPage> {
               } else {
                 if (state is AuthSuccess) {
                   return Center(
-                    child: Text(state.user.name),
+                    child: Text(state.user.email),
                   );
                 }
               }

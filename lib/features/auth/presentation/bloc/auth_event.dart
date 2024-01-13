@@ -13,3 +13,10 @@ class LoginButtonPressed extends AuthEvent {
 
   const LoginButtonPressed(this.email, this.password);
 }
+
+class RegisterButtonPressed extends AuthEvent {
+  final String email;
+  final String password;
+
+  const RegisterButtonPressed(this.email, this.password);
+}
